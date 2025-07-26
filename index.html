@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood-Based Theme Switcher</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body id="app" class="transition-all duration-500 ease-in-out min-h-screen flex flex-col items-center justify-center bg-gray-100 text-gray-900">
+
+  <h1 class="text-2xl font-bold mb-6">How are you feeling today?</h1>
+
+  <div class="space-x-4 mb-8">
+    <button onclick="setMood('focused')" class="px-4 py-2 rounded bg-blue-600 text-white">Focused</button>
+    <button onclick="setMood('relaxed')" class="px-4 py-2 rounded bg-green-500 text-white">Relaxed</button>
+    <button onclick="setMood('energetic')" class="px-4 py-2 rounded bg-red-500 text-white">Energetic</button>
+  </div>
+
+  <div id="content" class="p-6 rounded shadow bg-white max-w-md text-center">
+    <p class="text-lg">Select a mood to personalize your UI.</p>
+  </div>
+
+  <script>
+    function setMood(mood) {
+      const app = document.getElementById('app');
+      const content = document.getElementById('content');
+
+      if (mood === 'focused') {
+        app.className = "bg-gray-900 text-white transition-all duration-500 min-h-screen flex flex-col items-center justify-center";
+        content.className = "bg-gray-800 p-6 rounded shadow text-white max-w-md text-center";
+        content.innerHTML = "<p class='text-xl'>You're in the zone. Minimal distractions.</p>";
+      } else if (mood === 'relaxed') {
+        app.className = "bg-green-100 text-green-900 transition-all duration-500 min-h-screen flex flex-col items-center justify-center";
+        content.className = "bg-green-200 p-6 rounded shadow text-green-800 max-w-md text-center";
+        content.innerHTML = "<p class='text-xl'>Take it slow. Everything's calm here.</p>";
+      } else if (mood === 'energetic') {
+        app.className = "bg-yellow-50 text-yellow-900 transition-all duration-500 min-h-screen flex flex-col items-center justify-center";
+        content.className = "bg-yellow-200 p-6 rounded shadow text-yellow-900 max-w-md text-center font-bold";
+        content.innerHTML = "<p class='text-xl'>High energy! Let's get things done!</p>";
+      }
+    }
+  </script>
+</body>
+</html>
